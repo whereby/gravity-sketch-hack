@@ -8,10 +8,10 @@ declare global {
 export default function (store: any, participantListAtom: any) {
   window.getGsCoordsForParticipant = function (displayName) {
     const participantList = store.get(participantListAtom);
-    const p = participantList[0];
+    const p = participantList.find((p) => p[0] === displayName);
     console.log(participantList);
     if (!p) {
-      return JSON.stringify(false);
+      return JSON.stringify(new Date());
     } else {
       const cellElement = document.getElementById(`cell-${p[1]}`);
       const rect = cellElement.getBoundingClientRect();
