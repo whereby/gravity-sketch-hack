@@ -1,6 +1,6 @@
 import { atom, createStore } from "jotai";
 
-export const participantListAtom = atom([]);
+export const participantListAtom = atom<any[]>([]);
 
 const store = createStore();
 

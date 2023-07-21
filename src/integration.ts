@@ -9,7 +9,7 @@ export default function (store: any, participantListAtom: any) {
   window.getGsCoordsForParticipant = function (displayName) {
     const participantList = store.get(participantListAtom);
     const p = participantList.find((p) => p.name === displayName);
-
+    console.log(participantList);
     if (!p) {
       return JSON.stringify(false);
     } else {

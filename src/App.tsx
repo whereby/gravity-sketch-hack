@@ -6,14 +6,17 @@ import "./App.css";
 
 export type RoomConnectionRef = ReturnType<typeof useRoomConnection>;
 
-const roomName =
-  "https://funtimes.whereby.com/gs-p2p-test81e4f22c-dc75-47c0-b050-59c9aafc9c63";
-
-function App() {
+function App({
+  roomUrl,
+  displayName,
+}: {
+  roomUrl: string;
+  displayName: string;
+}) {
   const localMedia = useLocalMedia({ audio: true, video: true });
 
-  const roomConnection = useRoomConnection(roomName, {
-    displayName: "Test",
+  const roomConnection = useRoomConnection(roomUrl, {
+    displayName,
     localMedia,
   });
 
