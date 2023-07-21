@@ -4,6 +4,7 @@ declare global {
   }
 }
 
+// eslint-disable-next-line
 export default function (store: any, participantListAtom: any) {
   window.getGsCoordsForParticipant = function (displayName) {
     const participantList = store.get(participantListAtom);
