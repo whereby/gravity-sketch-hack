@@ -23,7 +23,11 @@ const Grid = ({ roomConnection }: GridProps) => {
 
         const { id, stream, displayName } = participant;
 
-        return <VideoTile key={id} stream={stream} name={displayName} />;
+        return (
+          <div>
+            <VideoTile key={id} stream={stream} name={displayName} />
+          </div>
+        );
       })}
     </div>
   );
