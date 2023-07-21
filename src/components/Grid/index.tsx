@@ -13,12 +13,11 @@ interface GridProps {
 
 const Grid = ({ roomConnection }: GridProps) => {
   const { state: roomState } = roomConnection;
-  const { remoteParticipants, localParticipant } = roomState;
+  const { remoteParticipants } = roomState;
   const [participantList, setParticipantList] = useAtom(participantListAtom);
   const [cellLookup, setCellLookup] = useState<{
     [displayName: string]: number;
   }>({});
-  const [tiles, setTiles] = useState([...remoteParticipants, localParticipant]);
   const CELL_COUNT = 8;
 
   useEffect(() => {
@@ -51,15 +50,31 @@ const Grid = ({ roomConnection }: GridProps) => {
     });
   }, [remoteParticipants, setCellLookup]);
 
+  useEffect(() => {
+    setParticipantList(Object.entries(cellLookup));
+  }, [cellLookup, setParticipantList]);
+
   return (
     <div className="Grid">
-      {tiles.map((participant) => {
-        if (!participant) return null;
+      {Object.entries(cellLookup).map(([name, value]) => {
+        const participant = remoteParticipants.find(
+          (p) => p.displayName === name
+        );
+
+        if (!participant) {
+          return (
+            <div
+              id={`cell-${value}`}
+              className={"tile"}
+              style={{ order: value + 1 }}
+            />
+          );
+        }
 
         const { id, stream, displayName } = participant;
 
         return (
-          <div>
+          <div id={`cell-${value}`} style={{ order: value + 1 }}>
             <VideoTile key={id} stream={stream} name={displayName} />
           </div>
         );

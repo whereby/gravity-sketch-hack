@@ -1,6 +1,4 @@
 .VideoTile {
-  width: 240px;
-  height: 240px;
   background: ghostwhite;
   border-radius: 12px;
   object-fit: cover;

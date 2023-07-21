@@ -8,12 +8,17 @@ declare global {
 export default function (store: any, participantListAtom: any) {
   window.getGsCoordsForParticipant = function (displayName) {
     const participantList = store.get(participantListAtom);
-    const p = participantList.find((p) => p.name === displayName);
+    const p = participantList.find((p) => p[0] === displayName);
     console.log(participantList);
     if (!p) {
       return JSON.stringify(false);
     } else {
-      return JSON.stringify({ originX: 2, originY: 2, widt: 200, height: 200 });
+      const el = document.getElementById(`cell-${p[1]}`);
+      const rect = el.getBoundingClientRect();
+      const pct = (window.innerHeight - rect.top) / window.innerHeight;
+      console.log(pct);
+      console.log(rect);
+      // return JSON.stringify({ originX: 2, originY: 2, widt: 200, height: 200 });
     }
   };
 }
