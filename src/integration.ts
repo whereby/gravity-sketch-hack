@@ -13,17 +13,23 @@ export default function (store: any, participantListAtom: any) {
     if (!p) {
       return JSON.stringify(false);
     } else {
-      const el = document.getElementById(`cell-${p[1]}`);
-      const rect = el.getBoundingClientRect();
-      const pct = (window.innerHeight - rect.top) / window.innerHeight;
+      const cellElement = document.getElementById(`cell-${p[1]}`);
+      const rect = cellElement.getBoundingClientRect();
 
+      console.log(cellElement);
       console.log(rect);
-      console.log(pct);
+
+      const videoElement = document.getElementById(`video-${p[0]}`);
+      const videoRect = videoElement.getBoundingClientRect();
+
+      console.log(videoElement);
+      console.log(videoRect);
+
       // Coordinates for 0,0 in the grid
       const xStart = (rect.left / window.innerWidth) * 100;
       const xEnd = (rect.right / window.innerWidth) * 100;
       const yStart = (rect.top / window.innerHeight) * 100;
-      const yEnd = (rect.bottom / window.innerHeight) * 100;
+      const yEnd = (videoRect.bottom / window.innerHeight) * 100;
 
       console.log(xStart, xEnd, yStart, yEnd);
 
@@ -35,7 +41,7 @@ export default function (store: any, participantListAtom: any) {
       const posX = (rect.left / window.innerWidth) * 100;
       const sizeX = rect.width;
       const posY = (rect.top / window.innerHeight) * 100;
-      const sizeY = rect.height;
+      const sizeY = rect.height; // this is the whole height of cell. change to just video?
 
       const pixelCoordinates = {
         posX,

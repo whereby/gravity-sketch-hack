@@ -14,7 +14,12 @@ const VideoTile = ({ id, name, stream }: VideoTileProps) => {
   return (
     <div className="VideoTile">
       {stream ? (
-        <VideoView key={id} stream={stream} width={"100%"} />
+        <VideoView
+          id={`video-${name}`}
+          key={id}
+          stream={stream}
+          width={"100%"}
+        />
       ) : (
         <div>
           <p>no stream</p>
