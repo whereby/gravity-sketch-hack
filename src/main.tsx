@@ -3,10 +3,10 @@ import App from "./App.tsx";
 import "./index.css";
 import { Provider } from "jotai";
 
-import store from "./store.ts";
+import store, { participantListAtom } from "./store.ts";
 import makeIntegration from "./integration.ts";
 
-makeIntegration(store);
+makeIntegration(store, participantListAtom);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
