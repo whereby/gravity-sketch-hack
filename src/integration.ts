@@ -1,11 +1,22 @@
 declare global {
   interface Window {
     getGsCoordsForParticipant: (displayName: string) => string;
+    vuplex?: { postMessage: ({ type, message }) => void };
   }
 }
 
+import s, { isConnectedAtom } from "./store";
+
 // eslint-disable-next-line
 export default function (store: any, participantListAtom: any) {
+  s.sub(isConnectedAtom, () => {
+    const isConnected = store.get(isConnectedAtom);
+
+    if (isConnected && window.vuplex) {
+      window.postMessage({ type: "connection", message: "connected" });
+    }
+  });
+
   window.getGsCoordsForParticipant = function (displayName) {
     const participantList = store.get(participantListAtom);
     const p = participantList.find((p) => p[0] === displayName);

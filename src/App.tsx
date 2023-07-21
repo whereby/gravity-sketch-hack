@@ -1,9 +1,10 @@
 import { useLocalMedia, useRoomConnection } from "@whereby.com/browser-sdk";
 
 import Grid from "./components/Grid";
-
+import { useAtom } from "jotai";
 import "./App.css";
-
+import { isConnectedAtom } from "./store";
+import { useEffect } from "react";
 export type RoomConnectionRef = ReturnType<typeof useRoomConnection>;
 
 function App({
@@ -13,8 +14,7 @@ function App({
   roomUrl: string;
   displayName: string;
 }) {
-  const localMedia = useLocalMedia({ audio: true, video: true });
-
+  const [isConnected, setIsConnected] = useAtom(isConnectedAtom);
   const roomConnection = useRoomConnection(roomUrl, {
     displayName,
     localMediaConstraints: {
@@ -26,7 +26,9 @@ function App({
   const { state: roomState } = roomConnection;
   const { roomConnectionStatus } = roomState;
 
-  const isConnected = roomConnectionStatus === "connected";
+  useEffect(() => {
+    setIsConnected(roomConnectionStatus === "connected");
+  }, [roomConnectionStatus]);
 
   return (
     <div>
