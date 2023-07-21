@@ -16,8 +16,8 @@ export default function (store: any, participantListAtom: any) {
       const el = document.getElementById(`cell-${p[1]}`);
       const rect = el.getBoundingClientRect();
       const pct = (window.innerHeight - rect.top) / window.innerHeight;
-      console.log(pct);
-      console.log(rect);
+
+      return JSON.stringify(rect);
     }
   };
 }
