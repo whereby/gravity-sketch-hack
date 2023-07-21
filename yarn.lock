@@ -629,7 +629,7 @@
     btoa "^1.2.1"
     heresy "^1.0.4"
 
-"@whereby/jslib-media@github:whereby/jslib-media#0.2.0":
+"@whereby/jslib-media@whereby/jslib-media.git#0.2.0":
   version "0.2.0"
   resolved "https://codeload.github.com/whereby/jslib-media/tar.gz/2e0354ca8c76810e710282f8051e08bde482090f"
   dependencies:
@@ -1446,6 +1446,11 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
+
+jotai@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-2.2.2.tgz#1e181789dcc01ced8240b18b95d9fa10169f9366"
+  integrity sha512-Cn8hnBg1sc5ppFwEgVGTfMR5WSM0hbAasd/bdAwIwTaum0j3OUPqBSC4tyk3jtB95vicML+RRWgKFOn6gtfN0A==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
