@@ -48,6 +48,7 @@ export default function (store: any, participantListAtom: any) {
         posY,
         sizeX,
         sizeY,
+        displayName,
       };
 
       console.log(pixelCoordinates);
