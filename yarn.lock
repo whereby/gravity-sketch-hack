@@ -617,10 +617,10 @@
     "@babel/plugin-transform-react-jsx-source" "^7.22.5"
     react-refresh "^0.14.0"
 
-"@whereby.com/browser-sdk@2.0.0-alpha10":
-  version "2.0.0-alpha10"
-  resolved "https://registry.yarnpkg.com/@whereby.com/browser-sdk/-/browser-sdk-2.0.0-alpha10.tgz#1b2bbc1de079e78c11df97625900ac56c4fb8d1b"
-  integrity sha512-Nqxryb8Lj3uj8zIy7S4O0aINCENGnOMb/G7+eeliq04myc1gUljPuPl5ZyZk324oMReMEEPjgwRFIXDxjM445g==
+"@whereby.com/browser-sdk@2.0.0-alpha8":
+  version "2.0.0-alpha8"
+  resolved "https://registry.yarnpkg.com/@whereby.com/browser-sdk/-/browser-sdk-2.0.0-alpha8.tgz#bc7c4d5fde36ec6ff02776e406964f96dcbbeef5"
+  integrity sha512-LIQR7XFOHS4ypNTkd5BLrentFvSpxxXByEFn7xo8UVk3yOxZlqXqit5xfpzWQqR75nBy98L6Rz4d1/1PuEVHuA==
   dependencies:
     "@swc/helpers" "^0.3.13"
     "@whereby/jslib-media" whereby/jslib-media.git#0.2.0
