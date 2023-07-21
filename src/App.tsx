@@ -1,6 +1,10 @@
 import { useLocalMedia, useRoomConnection } from "@whereby.com/browser-sdk";
 
+import Grid from "./components/Grid";
+
 import "./App.css";
+
+export type RoomConnectionRef = ReturnType<typeof useRoomConnection>;
 
 function App() {
   const roomName =
@@ -12,34 +16,20 @@ function App() {
     localMedia,
   });
 
-  const { state: roomState, components } = roomConnection;
+  const { state: roomState } = roomConnection;
+  const { roomConnectionStatus } = roomState;
 
-  const { localParticipant, remoteParticipants, roomConnectionStatus } =
-    roomState;
-  const { VideoView } = components;
+  const isConnected = roomConnectionStatus === "connected";
 
-  let content;
-
-  switch (roomConnectionStatus) {
-    case "connecting":
-      content = <div>Connecting...</div>;
-      break;
-    case "connected":
-      content = (
-        <div>
-          <div>Connected!</div>
-          <div>Local participant: {localParticipant?.displayName}</div>
-          {remoteParticipants.map((participant) => {
-            return participant.stream ? (
-              <VideoView key={participant.id} stream={participant.stream} />
-            ) : null;
-          })}
-        </div>
-      );
-      break;
-  }
-
-  return content;
+  return (
+    <div>
+      {isConnected ? (
+        <Grid roomConnection={roomConnection} />
+      ) : (
+        <div>Connecting...</div>
+      )}
+    </div>
+  );
 }
 
 export default App;
