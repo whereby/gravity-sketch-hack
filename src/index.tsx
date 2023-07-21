@@ -14,6 +14,6 @@ const displayName = urlParams.get("displayName") || "";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
-    <App roomUrl={roomUrl} displayName={displayName} />
+    <App />
   </Provider>
 );
