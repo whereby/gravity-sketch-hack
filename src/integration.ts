@@ -26,10 +26,10 @@ export default function (store: any, participantListAtom: any) {
       console.log(videoRect);
 
       // Coordinates for 0,0 in the grid
-      const xStart = (rect.left / window.innerWidth) * 100;
-      const xEnd = (rect.right / window.innerWidth) * 100;
-      const yStart = (rect.top / window.innerHeight) * 100;
-      const yEnd = (videoRect.bottom / window.innerHeight) * 100;
+      const xStart = rect.left / window.innerWidth;
+      const xEnd = rect.right / window.innerWidth;
+      const yStart = rect.top / window.innerHeight;
+      const yEnd = videoRect.bottom / window.innerHeight;
 
       console.log(xStart, xEnd, yStart, yEnd);
 
@@ -38,10 +38,10 @@ export default function (store: any, participantListAtom: any) {
         y: `${yStart}, ${yEnd}`,
       };
 
-      const posX = (rect.left / window.innerWidth) * 100;
-      const sizeX = rect.width;
-      const posY = (rect.top / window.innerHeight) * 100;
-      const sizeY = rect.height; // this is the whole height of cell. change to just video?
+      const posX = rect.left / window.innerWidth;
+      const sizeX = rect.width / window.innerWidth;
+      const posY = rect.top / window.innerHeight;
+      const sizeY = videoRect.height / window.innerHeight; // this is the whole height of cell. change to just video?
 
       const pixelCoordinates = {
         posX,
