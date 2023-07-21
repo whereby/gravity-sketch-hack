@@ -32,9 +32,21 @@ export default function (store: any, participantListAtom: any) {
         y: `${yStart}, ${yEnd}`,
       };
 
-      console.log(percentageCoordinates);
+      const posX = (rect.left / window.innerWidth) * 100;
+      const sizeX = rect.width;
+      const posY = (rect.top / window.innerHeight) * 100;
+      const sizeY = rect.height;
 
-      return JSON.stringify(rect);
+      const pixelCoordinates = {
+        posX,
+        posY,
+        sizeX,
+        sizeY,
+      };
+
+      console.log(pixelCoordinates);
+
+      return JSON.stringify(pixelCoordinates);
     }
   };
 }
