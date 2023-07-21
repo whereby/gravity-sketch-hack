@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { useLocalMedia, useRoomConnection } from "@whereby.com/browser-sdk";
 
 import "./App.css";
@@ -13,22 +12,13 @@ function App() {
     localMedia,
   });
 
-  const { state: roomState } = roomConnection;
+  const { state: roomState, components } = roomConnection;
 
   const { localParticipant, remoteParticipants, roomConnectionStatus } =
     roomState;
+  const { VideoView } = components;
 
   let content;
-
-  useEffect(() => {
-    console.log("roomConnectionStatus", roomConnectionStatus);
-  }, [roomConnectionStatus]);
-
-  console.log(remoteParticipants);
-
-  useEffect(() => {
-    console.log("remoteParticipants", remoteParticipants);
-  }, [remoteParticipants]);
 
   switch (roomConnectionStatus) {
     case "connecting":
@@ -39,7 +29,11 @@ function App() {
         <div>
           <div>Connected!</div>
           <div>Local participant: {localParticipant?.displayName}</div>
-          <div>Remote participants: {remoteParticipants.length}</div>
+          {remoteParticipants.map((participant) => {
+            return participant.stream ? (
+              <VideoView key={participant.id} stream={participant.stream} />
+            ) : null;
+          })}
         </div>
       );
       break;
