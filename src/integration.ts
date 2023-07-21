@@ -25,25 +25,12 @@ export default function (store: any, participantListAtom: any) {
       console.log(videoElement);
       console.log(videoRect);
 
-      // Coordinates for 0,0 in the grid
-      const xStart = rect.left / window.innerWidth;
-      const xEnd = rect.right / window.innerWidth;
-      const yStart = rect.top / window.innerHeight;
-      const yEnd = videoRect.bottom / window.innerHeight;
-
-      console.log(xStart, xEnd, yStart, yEnd);
-
-      const percentageCoordinates = {
-        x: `${xStart}, ${xEnd}`,
-        y: `${yStart}, ${yEnd}`,
-      };
-
       const posX = rect.left / window.innerWidth;
       const sizeX = rect.width / window.innerWidth;
       const posY = rect.top / window.innerHeight;
       const sizeY = videoRect.height / window.innerHeight; // this is the whole height of cell. change to just video?
 
-      const pixelCoordinates = {
+      const percentageCoordinates = {
         posX,
         posY,
         sizeX,
@@ -51,9 +38,9 @@ export default function (store: any, participantListAtom: any) {
         displayName,
       };
 
-      console.log(pixelCoordinates);
+      console.log(percentageCoordinates);
 
-      return JSON.stringify(pixelCoordinates);
+      return JSON.stringify(percentageCoordinates);
     }
   };
 }
