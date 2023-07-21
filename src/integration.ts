@@ -18,7 +18,6 @@ export default function (store: any, participantListAtom: any) {
       const pct = (window.innerHeight - rect.top) / window.innerHeight;
       console.log(pct);
       console.log(rect);
-      // return JSON.stringify({ originX: 2, originY: 2, widt: 200, height: 200 });
     }
   };
 }
