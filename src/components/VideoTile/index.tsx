@@ -1,5 +1,8 @@
 import React from "react";
+
 import { VideoView } from "@whereby.com/browser-sdk";
+
+import "./index.css";
 
 interface VideoTileProps {
   id?: string;
@@ -9,15 +12,15 @@ interface VideoTileProps {
 
 const VideoTile = ({ id, name, stream }: VideoTileProps) => {
   return (
-    <div>
+    <div className="VideoTile">
       {stream ? (
-        <VideoView key={id} stream={stream} />
+        <VideoView key={id} stream={stream} width={"100%"} />
       ) : (
         <div>
           <p>no stream</p>
         </div>
       )}
-      <span>{name}</span>
+      <div className="VideoTile__name">{name}</div>
     </div>
   );
 };

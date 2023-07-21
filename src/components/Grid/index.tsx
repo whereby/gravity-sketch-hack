@@ -3,6 +3,8 @@ import { useState } from "react";
 import VideoTile from "../VideoTile";
 import { RoomConnectionRef } from "../../App";
 
+import "./index.css";
+
 interface GridProps {
   roomConnection: RoomConnectionRef;
 }
@@ -15,7 +17,7 @@ const Grid = ({ roomConnection }: GridProps) => {
   const [tiles, setTiles] = useState([...remoteParticipants, localParticipant]);
 
   return (
-    <div>
+    <div className="Grid">
       {tiles.map((participant) => {
         if (!participant) return null;
 
