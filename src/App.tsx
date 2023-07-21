@@ -17,7 +17,10 @@ function App({
 
   const roomConnection = useRoomConnection(roomUrl, {
     displayName,
-    localMedia,
+    localMediaConstraints: {
+      video: true,
+      audio: false,
+    },
   });
 
   const { state: roomState } = roomConnection;
