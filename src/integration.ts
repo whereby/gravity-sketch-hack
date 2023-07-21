@@ -8,7 +8,7 @@ declare global {
 export default function (store: any, participantListAtom: any) {
   window.getGsCoordsForParticipant = function (displayName) {
     const participantList = store.get(participantListAtom);
-    const p = participantList.find((p) => p[0] === displayName);
+    const p = participantList[0];
     console.log(participantList);
     if (!p) {
       return JSON.stringify(false);
